@@ -18,9 +18,9 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String url = System.getenv().getOrDefault("RAILWAY_DB_URL", "jdbc:mysql://localhost:3306/railway?createDatabaseIfNotExist=true&serverTimezone=UTC");
-        String user = System.getenv().getOrDefault("RAILWAY_DB_USER", "root");
-        String pass = System.getenv().getOrDefault("RAILWAY_DB_PASSWORD", "yash15op");
+        String url = System.getenv("RAILWAY_DB_URL");
+        String user = System.getenv("RAILWAY_DB_USER");
+        String pass = System.getenv("RAILWAY_DB_PASSWORD");
         try (Connection conn = Database.connect(url, user, pass)) {
             Database.initSchema(conn);
             TrainDao trainDao = new TrainDao(conn);
